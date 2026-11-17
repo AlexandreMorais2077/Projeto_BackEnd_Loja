@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Livro{% endblock %}
+
+{% block content %}
+    <h1>Editar Livro</h1>
+    <form action="" method="post">
+        <label for="titulo">Título:</label><br>
+        <input type="text" id="titulo" name="titulo" value="{{ livro.titulo }}" maxlength="150" required><br><br>
+
+        <label for="autor">Autor:</label><br>
+        <input type="text" id="autor" name="autor" value="{{ livro.autor }}" maxlength="100" required><br><br>
+
+        <label for="isbn">ISBN:</label><br>
+        <input type="text" id="isbn" name="isbn" value="{{ livro.isbn or '' }}" maxlength="20"><br><br>
+
+        <label for="editora">Editora:</label><br>
+        <input type="text" id="editora" name="editora" value="{{ livro.editora or '' }}" maxlength="100"><br><br>
+
+        <label for="ano_publicacao">Ano de publicação:</label><br>
+        <input type="number" id="ano_publicacao" name="ano_publicacao" value="{{ livro.ano_publicacao if livro.ano_publicacao is not none else '' }}" min="0"><br><br>
+
+        <label for="quantidade">Quantidade:</label><br>
+        <input type="number" id="quantidade" name="quantidade" value="{{ livro.quantidade }}" min="0" required><br><br>
+
+        <input type="submit" value="Salvar">
+        <a href="{{ url_for('livro.listar_livros') }}">Cancelar</a>
+    </form>
+{% endblock %}
